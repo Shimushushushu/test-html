@@ -1,0 +1,32 @@
+<DOCTYPE html>
+<html>
+<head>
+  <title>
+    HTML test
+  </title>
+  <script type="module">
+    navigator.geolocation.getCurrentPosition((pos) => {
+      document.getElementById('output').innerText = 
+      `${pos.coords.longitude}, ${pos.coords.latitude}, at ${pos.coords.altitude}, with accuracy ±${pos.coords.accuracy} m.`
+    }, (error) => {
+      document.getElementById('output').innerText = 
+      `${error.message}`;
+    });
+  </script>
+  <style>
+    html {
+      width: 100%;
+      padding: 0%;
+    }
+    body {
+      width: 100%;
+      margin: 0%;
+    }
+    #output {
+      width: 100%;
+      padding: 0%;
+    }
+  </style>
+</head>
+<textarea id="output"></textarea>
+</html>
