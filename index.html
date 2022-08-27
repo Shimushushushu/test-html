@@ -15,22 +15,40 @@
         `${error.message}`;
       });
     })
+    document.getElementById('btn-getCurrentPosition-ha').addEventListener('click', (event) => {
+      // console.log('clicked');
+      navigator.geolocation.getCurrentPosition((pos) => {
+        document.getElementById('output').innerText = 
+        `${pos.coords.longitude}, ${pos.coords.latitude}, at ${pos.coords.altitude}, with accuracy ±${pos.coords.accuracy} m.`
+      }, (error) => {
+        document.getElementById('output').innerText = 
+        `${error.message}`;
+      });
+    }, {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0
+    })
   </script>
   <style>
     html {
       width: 100%;
+      margin:  0%;
       padding: 0%;
     }
     body {
       width: 100%;
-      margin: 0%;
+      margin:  0%;
+      padding: 0%;
     }
     #output {
       width: 100%;
+      margin:  0%;
       padding: 0%;
     }
   </style>
 </head>
 <textarea id="output"></textarea>
 <button id="btn-getCurrentPosition">getCurrentPosition()</button>
+<button id="btn-getCurrentPosition-ha">getCurrentPosition() /z HighAccuracy</button>
 </html>
