@@ -1,17 +1,20 @@
-<DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
   <title>
     HTML test
   </title>
   <script type="module">
-    navigator.geolocation.getCurrentPosition((pos) => {
-      document.getElementById('output').innerText = 
-      `${pos.coords.longitude}, ${pos.coords.latitude}, at ${pos.coords.altitude}, with accuracy ±${pos.coords.accuracy} m.`
-    }, (error) => {
-      document.getElementById('output').innerText = 
-      `${error.message}`;
-    });
+    document.getElementById('btn-getCurrentPosition').addEventListener('click', (event) => {
+      // console.log('clicked');
+      navigator.geolocation.getCurrentPosition((pos) => {
+        document.getElementById('output').innerText = 
+        `${pos.coords.longitude}, ${pos.coords.latitude}, at ${pos.coords.altitude}, with accuracy ±${pos.coords.accuracy} m.`
+      }, (error) => {
+        document.getElementById('output').innerText = 
+        `${error.message}`;
+      });
+    })
   </script>
   <style>
     html {
@@ -29,4 +32,5 @@
   </style>
 </head>
 <textarea id="output"></textarea>
+<button id="btn-getCurrentPosition">getCurrentPosition()</button>
 </html>
